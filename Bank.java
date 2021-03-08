@@ -1,27 +1,3 @@
-// You job is to create a simple banking application.
-// There should be a Bank class
-// It should have an arraylist of Branches
-// Each Branch should have an arraylist of Customers
-// The Customer class should have an arraylist of Doubles (transactions)
-// Customer:
-// Name, and the ArrayList of doubles.
-// Branch:
-// Need to be able to add a new customer and initial transaction amount.
-// Also needs to add additional transactions for that customer/branch
-// Bank:
-// Add a new branch
-// Add a customer to that branch with initial transaction
-// Add a transaction for an existing customer for that branch
-// Show a list of customers for a particular branch and optionally a list
-// of their transactions
-// Demonstration autoboxing and unboxing in your code
-// Hint: Transactions
-// Add data validation.
-// e.g. check if exists, or does not exist, etc.
-// Think about where you are adding the code to perform certain actions
-
-package arabatzis;
-
 import java.util.ArrayList;
 
 public class Bank {
@@ -57,22 +33,16 @@ public class Bank {
 		}
 		return false;
 	}
-
-	private Branch findBranch(String branchName) {
-		for (int i = 0; i < this.branches.size(); i++) {
-			Branch checkedBranch = this.branches.get(i);
-			if (checkedBranch.getName().equals(branchName)) {
-				return checkedBranch;
-			}
-		}
-		return null;
-	}
-
+	
+	
+	
+	// check if branch with name branchName exists. If yes, print out all customers and return true. Additionally, if 
+	//showTransactions is set true, print out the transactions. If not, return false.
 	public boolean listCustomers(String branchName, boolean showTransactions) {
 		Branch branch = findBranch(branchName);
+		
 		if (branch != null) {
 			System.out.println("Customer details for branch " + branch.getName());
-
 			ArrayList<Customer> branchCustomers = branch.getCustomers();
 			for (int i = 0; i < branchCustomers.size(); i++) {
 				Customer branchCustomer = branchCustomers.get(i);
@@ -93,4 +63,18 @@ public class Bank {
 			return false;
 		}
 	}
+
+	// checks if the bank has  a branch with the name "branchName"
+	// if yes return the branch object, if not return null
+	private Branch findBranch(String branchName) {
+		for (int i = 0; i < this.branches.size(); i++) {
+			Branch checkedBranch = this.branches.get(i);
+			if (checkedBranch.getName().equals(branchName)) {
+				return checkedBranch;
+			}
+		}
+		return null;
+	}
+
+
 }
